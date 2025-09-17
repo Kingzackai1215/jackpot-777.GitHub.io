@@ -1,2 +1,2 @@
 # .GitHub.io
-gane site for all
+site for all
