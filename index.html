@@ -4,13 +4,59 @@
     <meta charset="UTF-8">
     <title>Jackpot-777</title>
     <style>
-        body { font-family: sans-serif; text-align: center; }
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            /* Gradient border around the page */
+            border: 10px solid;
+            border-image: linear-gradient(45deg, #e88e17, #ff00cc, #00c3ff, #e88e17) 1;
+            margin: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
         h1 { color: #e88e17; }
+        /* Gradient border around the Particle Clicker image */
+        #particleClickerImg {
+            padding: 8px;
+            border: 6px solid;
+            border-image: linear-gradient(135deg, #ff00cc, #00c3ff, #e88e17) 1;
+            border-radius: 16px;
+            background: #fff;
+        }
     </style>
 </head>
 <body>
+
     <h1>Welcome to My Domain</h1>
     <p>This is where I'll host my own games. Stay tuned!</p>
+
+    <!-- Particle Clicker Image Button -->
+    <div id="particle-clicker-home">
+        <img src="fun/particle-clicker-master/assets/icons/png/particle_clicker.png" alt="Particle Clicker" id="particleClickerImg" style="width:200px;cursor:pointer;">
+        <p>Click the image to play Particle Clicker!</p>
+    </div>
+
+    <!-- Game Container (hidden by default) -->
+    <div id="particle-clicker-game" style="display:none; position:relative;">
+        <!-- Top-right menu -->
+        <div id="game-menu" style="position:absolute; top:10px; right:10px; z-index:10;">
+            <button id="backBtn" style="padding:8px 16px; font-size:16px;">Back</button>
+        </div>
+        <!-- Embedded game -->
+        <iframe src="fun/particle-clicker-master/index.html" style="width:90vw; height:80vh; border:none;"></iframe>
+    </div>
+
+    <script>
+    // Show game when image is clicked
+    document.getElementById('particleClickerImg').onclick = function() {
+        document.getElementById('particle-clicker-home').style.display = 'none';
+        document.getElementById('particle-clicker-game').style.display = 'block';
+    };
+    // Back button returns to homepage
+    document.getElementById('backBtn').onclick = function() {
+        document.getElementById('particle-clicker-game').style.display = 'none';
+        document.getElementById('particle-clicker-home').style.display = 'block';
+    };
+    </script>
 </body>
-    <a href="fun/particle-clicker-master/index.html">Play Particle Clicker</a>
 </html>
