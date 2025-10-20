@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        body { font-family: sans-serif; text-align: center; }
+        .gradient-border {
+            padding: 10px; /* space for the border */
+            border: 10px solid transparent;
+            border-radius: 15px; /* rounded edges */
+            background-image: linear-gradient(#fff, #fff), linear-gradient(to right, cyan, lime);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            /* Gradient border around the page */
+            border: 10px solid;
+            border-image: linear-gradient(45deg, #e88e17, #ff00cc, #00c3ff, #e88e17) 1;
+            margin: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
         h1 { color: #e88e17; }
         /* Gradient border around the Particle Clicker image */
         #particleClickerImg {

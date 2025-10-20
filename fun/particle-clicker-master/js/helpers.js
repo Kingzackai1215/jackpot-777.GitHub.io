@@ -7,13 +7,28 @@ var Helpers = (function () {
    */
   var loadFile = function (filename) {
     var res;
-    $.ajax({
-      async: false,
-      url : filename,
-      success : function(data) {
-        res = data;
+    try {
+      $.ajax({
+        async: false,
+        url : filename,
+        dataType: 'json',
+        success : function(data) {
+          res = data;
+        },
+        error: function(jqxhr, status, error) {
+          /* Fail loudly in dev, but return null so callers can handle missing data */
+          if (window && window.console) {
+            console.error('Failed to load', filename, status, error);
+          }
+          res = null;
+        }
+      });
+    } catch (e) {
+      if (window && window.console) {
+        console.error('Exception while loading', filename, e);
       }
-    });
+      res = null;
+    }
     return res;
   };
 
